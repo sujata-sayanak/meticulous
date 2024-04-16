@@ -6,7 +6,7 @@ async function startApp() {
   try {
     // Start the Meticulous recorder
     await tryLoadAndStartRecorder({
-      projectId: 'v1zKpQ9GJbaB0302xXW3rjymie76ILm1U2Cp5yFF',
+      projectId: '0XTPUVif3qPwtgpZQK9fDUXafaxE8ECQmSdNa4wa',
       isProduction: window.location.hostname !== 'localhost', // Determine production based on hostname
     });
     console.log('Meticulous recorder started successfully.');
