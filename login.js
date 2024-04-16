@@ -1,7 +1,21 @@
-// Simulate interactions with a simple web application
+// Import the tryLoadAndStartRecorder function from the recorder-loader module
+import { tryLoadAndStartRecorder } from '@alwaysmeticulous/recorder-loader';
 
-// Function to simulate clicking a button
-function clickButton(buttonId) {
+// Function to start the app
+async function startApp() {
+  try {
+    // Start the Meticulous recorder
+    await tryLoadAndStartRecorder({
+      projectId: 'v1zKpQ9GJbaB0302xXW3rjymie76ILm1U2Cp5yFF',
+      isProduction: window.location.hostname !== 'localhost', // Determine production based on hostname
+    });
+    console.log('Meticulous recorder started successfully.');
+  } catch (error) {
+    console.error('Error starting Meticulous recorder:', error);
+  }
+
+  // Function to simulate clicking a button
+  function clickButton(buttonId) {
     const button = document.getElementById(buttonId);
     if (button) {
       button.click();
@@ -9,7 +23,7 @@ function clickButton(buttonId) {
       console.error(`Button with ID ${buttonId} not found.`);
     }
   }
-  
+
   // Function to simulate filling out a form field
   function fillFormField(fieldId, value) {
     const field = document.getElementById(fieldId);
@@ -19,7 +33,7 @@ function clickButton(buttonId) {
       console.error(`Form field with ID ${fieldId} not found.`);
     }
   }
-  
+
   // Function to simulate submitting a form
   function submitForm(formId) {
     const form = document.getElementById(formId);
@@ -29,16 +43,19 @@ function clickButton(buttonId) {
       console.error(`Form with ID ${formId} not found.`);
     }
   }
-  
+
   // Simulate interactions
-  window.onload = function() {
+  window.onload = function () {
     // Click a button
     clickButton('submit-button');
-  
+
     // Fill out a form field
     fillFormField('username', 'example_user');
-  
+
     // Submit a form
     submitForm('login-form');
   };
-  
+}
+
+// Call the startApp function to initialize the app
+startApp();
